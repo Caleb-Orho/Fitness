@@ -151,7 +151,7 @@ const NewRoutine = ({ setNewRoutineToggled }) => {
         const batch = [];
 
         // Assuming "Fitness" is the collection name
-        const fitnessCollection = collection(db, 'Fitness', "Routine", routineTitle);
+        const fitnessCollection = collection(db, 'Fitness', "Routine", routineTitle, "Jan", '0');
 
         selectedExercises.forEach((exercise, index) => {
             const exerciseDocRef = doc(fitnessCollection, index.toString()); // You can adjust the document path as needed

@@ -2,7 +2,7 @@ import { add, folder, note, dumbell, profile, magnifyingglass, threedots, triang
 import NewRoutine from './NewRoutine'
 import EditRoutine from './EditRoutine'
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs, getDoc, doc, deleteDoc, updateDoc } from 'firebase/firestore';
+import { collection, getDocs, getDoc, doc, deleteDoc, updateDoc, setDoc } from 'firebase/firestore';
 import { db } from "../../FireBase/Firebase"
 import ShowEditRoutine from "../../assets/Others/ShowEditRoutine"
 import { useNavigate } from 'react-router-dom';
@@ -18,6 +18,32 @@ function HomeScreen() {
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+        // const addDocumentToCollection = async () => {
+        //     const fitnessCollection = collection(db, 'Fitness', 'Routine', "Test", "Jan", '0');
+
+        //     // Your data to be added to the document
+        //     const data = {
+        //         key1: 'value1',
+        //         key2: 'value2',
+        //         // Add other fields as needed
+        //     };
+
+        //     // Create a document reference with a custom ID
+        //     const customDocRef = doc(fitnessCollection, 'customDocumentIDs');
+
+        //     // Add the document to the specified collection
+        //     try {
+        //         await setDoc(customDocRef, data);
+        //         console.log('Document written with ID: ', 'customDocumentID');
+        //     } catch (error) {
+        //         console.error('Error adding document: ', error);
+        //     }
+        // };
+
+        // // Invoke the async function immediately
+        // addDocumentToCollection();
+    }, [])
     // bg-red-500 
     useEffect(() => {
         const fetchData = async () => {
@@ -171,7 +197,7 @@ function HomeScreen() {
 
                                 <div className='rounded w-full mt-3'>
                                     <button className='w-full rounded-md flex items-center justify-center flex-1 rounded gap-2 bg-blue-700 h-8'
-                                        onClick={() => navigate('/StartWorkOut')}>
+                                        onClick={() => navigate('/StartWorkOut', { state: { routineData: routine[routineName], routineName: routineName } })}>
                                         <p className='text-white font-medium text-sm'> Start Routine </p>
                                     </button>
                                 </div>
