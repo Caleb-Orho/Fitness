@@ -54,11 +54,11 @@ function HomeScreen() {
         const Change = async () => {
             if (editRoutineIndex !== 3) {
                 if (editRoutineIndex === 1) {
-                    const collectionRef = collection(db, "Fitness/Routine/ca");
+                    const collectionRef = collection(db, "Fitness/Routine/" + routineName);
                     const docSnap = await getDoc(doc(db, 'Fitness', 'Routine'));
                     const routineNamesData = docSnap.data()['RoutineNames'];
                     try {
-                        const updatedRoutineNamesData = routineNamesData.filter(element => element !== 'ca');
+                        const updatedRoutineNamesData = routineNamesData.filter(element => element !== routineName);
 
                         await updateDoc(doc(db, 'Fitness', 'Routine'), { RoutineNames: updatedRoutineNamesData });
 
