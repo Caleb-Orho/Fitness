@@ -15,3 +15,4 @@ export { default as updown } from "./updown.svg";
 export { default as magnifyingglass } from "./magnifyingglass.svg";
 export { default as pen } from "./pen.svg";
 export { default as duplicate } from "./duplicate.svg";
+export { default as triangleright } from "./triangleright.svg";

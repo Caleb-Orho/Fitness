@@ -1,10 +1,11 @@
-import { add, folder, note, dumbell, profile, magnifyingglass, threedots } from "../../assets/SVG";
+import { add, folder, note, dumbell, profile, magnifyingglass, threedots, triangleright } from "../../assets/SVG";
 import NewRoutine from './NewRoutine'
 import EditRoutine from './EditRoutine'
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs, getDoc, doc, deleteDoc, updateDoc } from 'firebase/firestore';
 import { db } from "../../FireBase/Firebase"
 import ShowEditRoutine from "../../assets/Others/ShowEditRoutine"
+import { useNavigate } from 'react-router-dom';
 
 function HomeScreen() {
     const [newRoutineToggled, setNewRoutineToggled] = useState(false);
@@ -14,6 +15,8 @@ function HomeScreen() {
 
     const [routineName, setRoutineName] = useState();
     const [editRoutineIndex, setEditRoutineIndex] = useState(-1);
+
+    const navigate = useNavigate();
 
     // bg-red-500 
     useEffect(() => {
@@ -107,7 +110,7 @@ function HomeScreen() {
             {/* Routines and Folder Buttons */}
             <div className='mt-4 flex items-center justify-between ml-5 mr-5'>
                 <p className='text-black font-bold'> Routines </p>
-                <img src={folder} className='w-8' alt="add" />
+                {/* <img src={folder} className='w-8' alt="add" /> */}
             </div>
 
             {/* New Routine and Routines Buttons */}
@@ -127,13 +130,14 @@ function HomeScreen() {
                 </button>
             </div>
 
-            <div className="px-5 mt-5">
-                <button className="text-sm font-semibold text-gray-400"
+            <div className="px-5 mt-5 ">
+                <button className="text-sm font-semibold text-gray-400 flex flex-row gap-1 w-full"
                     onClick={() => setExpandMyRoutine(!expandMyRoutine)}>
+                    <img src={triangleright} className={`w-5 ${expandMyRoutine ? 'rotate-90' : ''}`} alt="add" />
                     My Routnies
                 </button>
 
-                {
+                {expandMyRoutine &&
                     Object.keys(routine).map((routineName) => (
                         <div className="rounded-md border-[1px] border-gray-200 mt-5">
 
@@ -167,7 +171,7 @@ function HomeScreen() {
 
                                 <div className='rounded w-full mt-3'>
                                     <button className='w-full rounded-md flex items-center justify-center flex-1 rounded gap-2 bg-blue-700 h-8'
-                                        onClick={() => ''}>
+                                        onClick={() => navigate('/StartWorkOut')}>
                                         <p className='text-white font-medium text-sm'> Start Routine </p>
                                     </button>
                                 </div>

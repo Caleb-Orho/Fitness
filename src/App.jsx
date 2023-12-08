@@ -1,9 +1,9 @@
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useState } from 'react';
+import React from 'react';
 import SignIn from './Components/Auth/Signin';
 import SignUp from './Components/Auth/SignUp';
 import HomeScreen from "./Components/Workout/HomeScreen";
+import StartWorkOut from "./Components/Workout/StartWorkOut";
 
 function App() {
 
@@ -18,6 +18,7 @@ function App() {
         <Route index element={<SignUp />} />
         <Route path="SignIn" element={<SignIn />} />
         <Route path="HomeScreen" element={<HomeScreen />} />
+        <Route path="StartWorkOut" element={<StartWorkOut />} />
       </Routes>
     </BrowserRouter>
   )
